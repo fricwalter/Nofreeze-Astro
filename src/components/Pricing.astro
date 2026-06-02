@@ -1,0 +1,63 @@
+---
+import { PLANS, PLAN_FEATURES } from '../data/pricing';
+import { whatsappLink, SITE } from '../data/site';
+const { showSchema = true } = Astro.props as { showSchema?: boolean };
+
+const offers = PLANS.map((p) => ({
+  '@type': 'Offer',
+  name: `NoFreeze IPTV – ${p.duration}`,
+  price: p.price,
+  priceCurrency: 'EUR',
+  availability: 'https://schema.org/InStock',
+  url: SITE.url + '/iptv-subscription-plans/',
+}));
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'NoFreeze IPTV Abo',
+  description: 'Premium IPTV Abo mit über 50.000 Live-Kanälen und 70.000 VOD-Inhalten in HD, 4K und 8K.',
+  brand: { '@type': 'Brand', name: SITE.brand },
+  offers: {
+    '@type': 'AggregateOffer',
+    lowPrice: '14.99',
+    highPrice: '83.99',
+    priceCurrency: 'EUR',
+    offerCount: PLANS.length,
+    offers,
+  },
+};
+---
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-head center">
+      <p class="eyebrow">Preise</p>
+      <h2>Wählen Sie Ihr <span class="gradient-text">passendes Paket</span></h2>
+      <p class="lead">Sport, Filme und Serien überall streamen. Alle Pakete enthalten unsere
+        <a href="/terms-of-service/" style="color:hsl(var(--primary))">30-Tage-Geld-zurück-Garantie</a>.
+        Lesen Sie vor dem Kauf unsere <a href="/terms-of-service/" style="color:hsl(var(--primary))">AGB</a> und
+        <a href="/privacy-policy/" style="color:hsl(var(--primary))">Datenschutzhinweise</a>.</p>
+    </div>
+
+    <div class="grid grid-4">
+      {PLANS.map((plan) => (
+        <div class={`card card-hover price-card ${plan.popular ? 'popular' : ''}`}>
+          {plan.popular && <div class="price-badge">Beliebteste Wahl</div>}
+          {plan.savings && <div class="price-badge">{plan.savings}</div>}
+          <div class="center" style="margin-bottom:1rem;">
+            <h3>{plan.duration}</h3>
+            <div><span class="price-amount gradient-text">{plan.price}</span><span class="price-cur"> €</span></div>
+            {plan.perMonth && <p style="color:#34d399;font-size:.8rem;margin:.25rem 0 0;">{plan.perMonth}</p>}
+            <p class="muted" style="font-weight:700;margin-top:.5rem;">{plan.planLabel}</p>
+          </div>
+          <ul class="check-list" style="flex:1;">
+            {PLAN_FEATURES.map((f) => (<li>{f}</li>))}
+          </ul>
+          <a class={`btn ${plan.popular ? 'btn--primary' : 'btn--outline'}`} style="width:100%;margin-top:1.25rem;"
+             href={whatsappLink(plan.whatsappText)} target="_blank" rel="noopener nofollow">Jetzt kaufen</a>
+          <p class="muted center" style="font-size:.78rem;margin:.75rem 0 0;">✓ Zufrieden oder Geld zurück</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+{showSchema && <script type="application/ld+json" set:html={JSON.stringify(productSchema)} />}

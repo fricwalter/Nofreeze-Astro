@@ -1,0 +1,21 @@
+---
+const items = [
+  { ic: '⚡', t: 'Ruckelfreies Streaming', d: 'Stabile Server und Anti-Buffering-Technologie für flüssiges Live-TV.' },
+  { ic: '🎯', t: '4K & 8K Qualität', d: 'Gestochen scharfe Bilder in HD, FHD, 4K und 8K – je nach Inhalt.' },
+  { ic: '🌍', t: 'Weltweite Kanäle', d: 'Über 50.000 internationale Sender aus den USA, UK, Europa und mehr.' },
+  { ic: '🛡️', t: '30 Tage Garantie', d: 'Geld-zurück-Garantie – Sie gehen kein Risiko ein.' },
+];
+---
+<section class="section">
+  <div class="container">
+    <div class="grid grid-4">
+      {items.map((i) => (
+        <div class="card">
+          <div style="font-size:1.8rem">{i.ic}</div>
+          <h3 style="margin:.75rem 0 .35rem;font-size:1.15rem;">{i.t}</h3>
+          <p class="muted" style="margin:0;font-size:.95rem;">{i.d}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

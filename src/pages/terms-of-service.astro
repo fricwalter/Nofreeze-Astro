@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { SITE } from '../data/site';
+const title = 'AGB & Nutzungsbedingungen | NoFreeze IPTV';
+const description = 'Allgemeine Geschäftsbedingungen von NoFreeze IPTV: Leistungsumfang, Zahlung, 30-Tage-Geld-zurück-Garantie, Pflichten der Nutzer und rechtliche Hinweise.';
+---
+<Layout title={title} description={description}>
+  <Breadcrumbs items={[{ label: 'AGB' }]} />
+  <section class="section" style="padding-top:1.5rem;">
+    <div class="container prose">
+      <h1>Allgemeine Geschäftsbedingungen (AGB)</h1>
+      <p class="muted">Zuletzt aktualisiert: Januar 2026</p>
+      <p>Diese Bedingungen regeln die Nutzung der Dienste von {SITE.brand} ({SITE.domain}). Mit der Bestellung
+        erkennen Sie diese AGB an.</p>
+
+      <h2>1. Leistungsbeschreibung</h2>
+      <p>NoFreeze IPTV stellt eine IPTV-Streaming-Technologie zur Verfügung. IPTV ist eine Übertragungstechnologie.
+        Nutzer sind verpflichtet, ausschließlich ordnungsgemäß lizenzierte Inhalte und Dienste zu verwenden.</p>
+
+      <h2>2. Bestellung & Zahlung</h2>
+      <p>Die Bestellung erfolgt über WhatsApp. Nach Zahlungseingang erhalten Sie Ihre Zugangsdaten. Die jeweils
+        gültigen Preise und Laufzeiten finden Sie auf der Seite <a href="/iptv-subscription-plans/">Preise & Pakete</a>.</p>
+
+      <h2>3. 30-Tage-Geld-zurück-Garantie</h2>
+      <p>Sind Sie mit dem Dienst nicht zufrieden, können Sie innerhalb von 30 Tagen eine Erstattung beantragen,
+        sofern die Voraussetzungen erfüllt sind. Details erhalten Sie auf Anfrage über unseren Support.</p>
+
+      <h2>4. Pflichten der Nutzer</h2>
+      <ul>
+        <li>Verwendung des Dienstes ausschließlich im Rahmen geltenden Rechts</li>
+        <li>Keine Weitergabe der Zugangsdaten an Dritte</li>
+        <li>Nutzung ausschließlich ordnungsgemäß lizenzierter Inhalte</li>
+      </ul>
+
+      <h2>5. Verfügbarkeit</h2>
+      <p>Wir bemühen uns um eine hohe Verfügbarkeit, können jedoch keine unterbrechungsfreie Nutzung garantieren,
+        da die Streaming-Qualität auch von Ihrer Internetverbindung und Ihren Geräten abhängt.</p>
+
+      <h2>6. Haftung</h2>
+      <p>Die Haftung richtet sich nach den gesetzlichen Bestimmungen. Für Inhalte Dritter übernehmen wir keine Haftung.</p>
+
+      <h2>7. Kontakt</h2>
+      <p>Fragen zu diesen Bedingungen richten Sie bitte an {SITE.email} oder über unsere
+        <a href="/contact/">Kontaktseite</a>. Siehe auch unsere <a href="/privacy-policy/">Datenschutzerklärung</a>.</p>
+    </div>
+  </section>
+</Layout>

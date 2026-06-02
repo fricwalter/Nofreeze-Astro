@@ -1,0 +1,31 @@
+---
+import { FOOTER_GROUPS, SITE } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="/" class="brand"><span class="gradient-text">NoFreeze</span></a>
+        <p class="muted" style="margin-top:1rem;max-width:22rem;">Premium IPTV für Sport, Filme und Serien in HD, 4K und 8K – auf allen Geräten, weltweit und ohne Buffering.</p>
+        <p class="muted" style="font-size:.85rem">Bitte nutzen Sie ausschließlich ordnungsgemäß lizenzierte Inhalte und Dienste.</p>
+      </div>
+      {FOOTER_GROUPS.map((group) => (
+        <div>
+          <h4>{group.title}</h4>
+          <ul>
+            {group.links.map((l) => (<li><a href={l.path}>{l.label}</a></li>))}
+          </ul>
+        </div>
+      ))}
+    </div>
+    <div class="footer-bottom">
+      <span>© {year} {SITE.brand} – {SITE.domain}. Alle Rechte vorbehalten.</span>
+      <span>
+        <a href="/privacy-policy/">Datenschutz</a> ·
+        <a href="/terms-of-service/">AGB</a> ·
+        <a href="/contact/">Kontakt</a>
+      </span>
+    </div>
+  </div>
+</footer>

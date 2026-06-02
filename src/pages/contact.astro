@@ -1,0 +1,113 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { SITE, whatsappLink } from '../data/site';
+
+const title = 'Kontakt | NoFreeze IPTV Support – WhatsApp & E-Mail';
+const description = 'Kontaktieren Sie das NoFreeze IPTV Team per WhatsApp oder E-Mail. Schneller Support 7 Tage die Woche bei Bestellung, Einrichtung und Fragen rund um IPTV.';
+---
+<Layout title={title} description={description}>
+  <Breadcrumbs items={[{ label: 'Kontakt' }]} />
+  <section class="section" style="padding-top:1.5rem;">
+    <div class="container" style="max-width:52rem;">
+      <p class="eyebrow">Kontakt</p>
+      <h1>Kontakt & Support</h1>
+      <p class="lead">Haben Sie Fragen zu Paketen, Einrichtung oder Ihrem Abo? Unser Support-Team hilft Ihnen
+        7 Tage die Woche schnell weiter – am einfachsten direkt über WhatsApp.</p>
+
+      <div class="grid grid-2 mt-3">
+        <div class="card">
+          <h3>💬 WhatsApp</h3>
+          <p class="muted">Schnellste Antwort – ideal für Bestellung und Einrichtung.</p>
+          <a class="btn btn--primary" href={whatsappLink('Hallo, ich habe eine Frage zu NoFreeze IPTV.')} target="_blank" rel="noopener nofollow">Chat starten</a>
+        </div>
+        <div class="card">
+          <h3>✉️ E-Mail</h3>
+          <p class="muted">Für ausführliche Anfragen erreichen Sie uns per E-Mail.</p>
+          <a class="btn btn--outline" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+        </div>
+      </div>
+
+      <h2 class="mt-4">Schreiben Sie uns</h2>
+      <p class="muted">Nutzen Sie das Formular – Ihre Nachricht erreicht uns direkt per E-Mail.</p>
+      <form id="contactForm" class="card" style="display:flex;flex-direction:column;gap:1rem;margin-top:1rem;" novalidate>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;" class="cf-row">
+          <label style="display:flex;flex-direction:column;gap:.35rem;">
+            <span style="font-weight:600;font-size:.9rem;">Name</span>
+            <input name="name" type="text" required autocomplete="name" class="cf-input" />
+          </label>
+          <label style="display:flex;flex-direction:column;gap:.35rem;">
+            <span style="font-weight:600;font-size:.9rem;">E-Mail</span>
+            <input name="email" type="email" required autocomplete="email" class="cf-input" />
+          </label>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:.35rem;">
+          <span style="font-weight:600;font-size:.9rem;">Nachricht</span>
+          <textarea name="message" rows="5" required class="cf-input"></textarea>
+        </label>
+        <input type="text" name="company" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true" />
+        <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+          <button type="submit" class="btn btn--primary" id="cfSubmit">Nachricht senden</button>
+          <span id="cfStatus" role="status" aria-live="polite" class="muted" style="font-size:.92rem;"></span>
+        </div>
+      </form>
+
+      <p class="muted mt-3" style="font-size:.9rem;">Hinweis: NoFreeze IPTV beschreibt IPTV als Technologie.
+        Bitte nutzen Sie ausschließlich ordnungsgemäß lizenzierte Inhalte und Dienste.</p>
+    </div>
+  </section>
+
+  <style>
+    .cf-input { background: hsl(var(--background)); border: 1px solid hsl(var(--border)); border-radius: 8px;
+      padding: .7rem .8rem; color: hsl(var(--foreground)); font-family: inherit; font-size: 1rem; width: 100%; }
+    .cf-input:focus { outline: none; border-color: hsl(var(--primary)); }
+    @media (max-width: 600px) { .cf-row { grid-template-columns: 1fr !important; } }
+  </style>
+  <script is:inline>
+    (function () {
+      var form = document.getElementById('contactForm');
+      if (!form) return;
+      var statusEl = document.getElementById('cfStatus');
+      var btn = document.getElementById('cfSubmit');
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        statusEl.style.color = '';
+        statusEl.textContent = 'Senden …';
+        btn.disabled = true;
+        var fd = new FormData(form);
+        var payload = {
+          name: fd.get('name'), email: fd.get('email'),
+          message: fd.get('message'), company: fd.get('company'),
+        };
+        try {
+          var res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+          var data = await res.json().catch(function () { return {}; });
+          if (res.ok) {
+            form.reset();
+            statusEl.style.color = '#34d399';
+            statusEl.textContent = data.message || 'Nachricht gesendet.';
+          } else {
+            statusEl.style.color = '#f87171';
+            statusEl.textContent = data.error || 'Versand fehlgeschlagen.';
+          }
+        } catch (err) {
+          statusEl.style.color = '#f87171';
+          statusEl.textContent = 'Netzwerkfehler. Bitte später erneut versuchen.';
+        } finally {
+          btn.disabled = false;
+        }
+      });
+    })();
+  </script>
+
+  <RelatedLinks alt={true} title="Vielleicht hilft das schon weiter" items={[
+    { ic: '❓', label: 'FAQ', path: '/faq/', desc: 'Antworten auf häufige Fragen.' },
+    { ic: '⚙️', label: 'Einrichtungsanleitung', path: '/setup-guide/', desc: 'Schritt für Schritt einrichten.' },
+    { ic: '💳', label: 'Preise & Pakete', path: '/iptv-subscription-plans/', desc: 'Alle Abos im Überblick.' },
+  ]} />
+</Layout>

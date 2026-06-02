@@ -1,0 +1,52 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import FAQ from '../../components/FAQ.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { SITE } from '../../data/site';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({ params: { slug: post.slug }, props: { post, posts } }));
+}
+type Props = { post: CollectionEntry<'blog'>; posts: CollectionEntry<'blog'>[] };
+const { post, posts } = Astro.props as Props;
+const { Content } = await post.render();
+
+const related = post.data.related
+  .map((slug) => posts.find((p) => p.slug === slug))
+  .filter(Boolean)
+  .slice(0, 3)
+  .map((p) => ({ label: p!.data.title, path: `/blog/${p!.slug}/`, desc: p!.data.excerpt }));
+
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.date,
+  dateModified: post.data.updated ?? post.data.date,
+  inLanguage: 'de',
+  author: { '@type': 'Organization', name: SITE.brand },
+  publisher: { '@type': 'Organization', name: SITE.brand, url: SITE.url },
+  mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE.url}/blog/${post.slug}/` },
+};
+---
+<Layout title={post.data.seoTitle} description={post.data.description} ogType="article">
+  <Breadcrumbs items={[{ label: 'Blog', path: '/blog/' }, { label: post.data.title }]} />
+  <article class="section" style="padding-top:1.5rem;">
+    <div class="container prose">
+      <p class="eyebrow">{new Date(post.data.date).toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+      <h1>{post.data.title}</h1>
+      <p class="lead">{post.data.excerpt}</p>
+      <Content />
+    </div>
+  </article>
+
+  {post.data.faq.length > 0 && <FAQ items={post.data.faq} title="Häufige Fragen" />}
+  {related.length > 0 && <RelatedLinks title="Verwandte Artikel" items={related} alt={post.data.faq.length === 0} />}
+  <CtaBand />
+  <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
+</Layout>

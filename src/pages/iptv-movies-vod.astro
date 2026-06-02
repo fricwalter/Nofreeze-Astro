@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Pricing from '../components/Pricing.astro';
+import FAQ from '../components/FAQ.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const title = 'IPTV Filme & Serien (VOD) 2026 | Über 70.000 Titel in 4K – NoFreeze';
+const description = 'IPTV VOD-Bibliothek mit über 70.000 Filmen und Serien auf Abruf – aktuelle Blockbuster, Klassiker und komplette Serienstaffeln in HD und 4K. Jederzeit streamen.';
+const faq = [
+  { q: 'Wie viele Filme und Serien sind enthalten?', a: 'Die VOD-Bibliothek umfasst über 70.000 Filme und Serien, von aktuellen Blockbustern bis zu kompletten Serienstaffeln – jederzeit auf Abruf.' },
+  { q: 'Wird die VOD-Bibliothek aktualisiert?', a: 'Ja, die Bibliothek wird regelmäßig mit neuen Titeln erweitert, sodass Sie stets aktuelle Inhalte finden.' },
+  { q: 'Kann ich VOD auf jedem Gerät schauen?', a: 'Ja, VOD-Inhalte stehen auf Firestick, Smart TV, Apple TV, Android, iOS und PC zur Verfügung – in HD und 4K.' },
+];
+---
+<Layout title={title} description={description}>
+  <Breadcrumbs items={[{ label: 'Filme & Serien (VOD)' }]} />
+  <section class="section" style="padding-top:1.5rem;">
+    <div class="container" style="max-width:52rem;">
+      <p class="eyebrow">VOD</p>
+      <h1>IPTV Filme & Serien – über 70.000 VOD-Titel in 4K</h1>
+      <p class="lead">Mehr als nur Live-TV: Mit der VOD-Bibliothek von NoFreeze IPTV genießen Sie über 70.000 Filme und
+        Serien auf Abruf – von aktuellen Blockbustern über zeitlose Klassiker bis zu kompletten Serienstaffeln, in HD und 4K.</p>
+
+      <h2 class="mt-4">Ihre Vorteile</h2>
+      <ul class="check-list">
+        <li>Über 70.000 Filme und Serien jederzeit auf Abruf</li>
+        <li>Aktuelle Blockbuster, Klassiker und komplette Staffeln</li>
+        <li>HD- und 4K-Qualität für das volle Heimkino-Erlebnis</li>
+        <li>Regelmäßig erweiterte Bibliothek mit neuen Titeln</li>
+      </ul>
+    </div>
+  </section>
+
+  <Pricing showSchema={false} />
+  <RelatedLinks alt={true} title="Passende Seiten" items={[
+    { ic: '📺', label: 'TV-Kanäle', path: '/iptv-channels/', desc: 'Über 50.000 Live-Sender.' },
+    { ic: '🎯', label: '4K Streaming', path: '/iptv-4k-streaming/', desc: 'Maximale Bildqualität.' },
+    { ic: '🍎', label: 'IPTV Apple TV', path: '/iptv-apple-tv/', desc: 'VOD flüssig auf Apple TV.' },
+  ]} />
+  <FAQ items={faq} title="Häufige Fragen zu VOD" />
+  <CtaBand />
+</Layout>

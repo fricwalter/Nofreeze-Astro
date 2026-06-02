@@ -1,0 +1,20 @@
+---
+import { whatsappLink } from '../data/site';
+const {
+  title = 'Bereit für stabiles Streaming ohne Buffering?',
+  text = 'Starten Sie noch heute mit NoFreeze IPTV – über 50.000 Kanäle in HD, 4K und 8K, auf allen Geräten.',
+  waText = 'Hallo, ich möchte ein NoFreeze IPTV Abo starten. Bitte senden Sie mir die Details.',
+} = Astro.props as { title?: string; text?: string; waText?: string };
+---
+<section class="section">
+  <div class="container">
+    <div class="cta-band">
+      <h2>{title}</h2>
+      <p class="lead center" style="margin-bottom:1.5rem;">{text}</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a class="btn btn--primary btn--lg" href={whatsappLink(waText)} target="_blank" rel="noopener nofollow">Per WhatsApp bestellen</a>
+        <a class="btn btn--outline btn--lg" href="/iptv-subscription-plans/">Pakete & Preise ansehen</a>
+      </div>
+    </div>
+  </div>
+</section>

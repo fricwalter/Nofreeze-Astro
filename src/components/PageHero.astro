@@ -1,0 +1,12 @@
+---
+// Inner page hero with single H1
+const { eyebrow, h1, intro } = Astro.props as { eyebrow?: string; h1: string; intro?: string };
+---
+<section class="section" style="padding-top:2.5rem;">
+  <div class="container" style="max-width:52rem;">
+    {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+    <h1>{h1}</h1>
+    {intro && <p class="lead">{intro}</p>}
+    <slot />
+  </div>
+</section>

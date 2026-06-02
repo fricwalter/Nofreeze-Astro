@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Pricing from '../components/Pricing.astro';
+import FAQ from '../components/FAQ.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const title = 'IPTV Kanäle 2026 | Über 50.000 Live-Sender international – NoFreeze';
+const description = 'Über 50.000 IPTV Kanäle: Sport, Nachrichten, Filme, Kinder und internationale Sender aus USA, UK, Deutschland, Arabisch, Latino und mehr. Alles in HD & 4K.';
+const cats = [
+  { t: 'Sport', d: 'NFL, Fußball, NBA, Formel 1 und PPV-Events live.' },
+  { t: 'Nachrichten', d: 'Internationale Nachrichtensender rund um die Uhr.' },
+  { t: 'Filme & Serien', d: 'Premium-Filmsender und Serienkanäle.' },
+  { t: 'Kinder', d: 'Sichere Unterhaltung für die Kleinen.' },
+  { t: 'International', d: 'US-, UK-, deutsche, arabische und Latino-Kanäle.' },
+  { t: 'Dokumentation', d: 'Wissens- und Doku-Sender in HD.' },
+];
+const faq = [
+  { q: 'Wie viele Kanäle sind enthalten?', a: 'NoFreeze IPTV bietet über 50.000 Live-Kanäle aus aller Welt sowie mehr als 70.000 Filme und Serien als VOD.' },
+  { q: 'Gibt es internationale Kanäle?', a: 'Ja, neben deutschen und europäischen Sendern erhalten Sie US-, UK-, arabische, Latino- und viele weitere internationale Kanäle – ideal für Expats.' },
+  { q: 'Sind die Kanäle in HD verfügbar?', a: 'Die meisten Kanäle sind in HD oder FHD verfügbar, viele Inhalte auch in 4K. Die genaue Qualität hängt vom Sender und Ihrer Internetverbindung ab.' },
+];
+---
+<Layout title={title} description={description}>
+  <Breadcrumbs items={[{ label: 'TV-Kanäle' }]} />
+  <section class="section" style="padding-top:1.5rem;">
+    <div class="container" style="max-width:52rem;">
+      <p class="eyebrow">Kanäle</p>
+      <h1>Über 50.000 IPTV Kanäle – international & in HD/4K</h1>
+      <p class="lead">Von Live-Sport über Nachrichten bis zu Filmen, Kinderprogramm und internationalen Sendern:
+        NoFreeze IPTV bietet eine der größten Kanalauswahlen mit über 50.000 Live-Sendern und mehr als 70.000 VOD-Titeln.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-3">
+        {cats.map((c) => (<div class="card"><h3>{c.t}</h3><p class="muted" style="margin:0">{c.d}</p></div>))}
+      </div>
+    </div>
+  </section>
+
+  <Pricing showSchema={false} />
+  <RelatedLinks alt={true} title="Passende Seiten" items={[
+    { ic: '⚽', label: 'IPTV Sport', path: '/iptv-sports/', desc: 'NFL, Fußball und Live-Sport.' },
+    { ic: '🎬', label: 'Filme & Serien (VOD)', path: '/iptv-movies-vod/', desc: 'Über 70.000 Titel auf Abruf.' },
+    { ic: '🌍', label: 'IPTV nach Ländern', path: '/countries/', desc: 'Lokale & internationale Sender.' },
+  ]} />
+  <FAQ items={faq} title="Häufige Fragen zu IPTV Kanälen" />
+  <CtaBand />
+</Layout>

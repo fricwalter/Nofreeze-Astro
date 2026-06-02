@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Pricing from '../components/Pricing.astro';
+import FAQ from '../components/FAQ.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const title = 'IPTV Abo kaufen 2026 | NoFreeze IPTV in Minuten bestellen';
+const description = 'IPTV Abo kaufen leicht gemacht: Paket wählen, per WhatsApp bestellen und in Minuten Zugangsdaten erhalten. Über 50.000 Kanäle, 4K und 30 Tage Garantie.';
+const faq = [
+  { q: 'Wie kaufe ich ein IPTV Abo?', a: 'Wählen Sie ein Paket, klicken Sie auf „Jetzt kaufen“ und bestellen Sie bequem per WhatsApp. Unser Team sendet Ihnen Zahlungsdetails und anschließend Ihre Zugangsdaten – meist innerhalb weniger Minuten.' },
+  { q: 'Gibt es eine Testphase?', a: 'Dank der 30-tägigen Geld-zurück-Garantie können Sie NoFreeze IPTV risikofrei ausprobieren. Bei Fragen zu einem Test kontaktieren Sie uns einfach über WhatsApp.' },
+  { q: 'Wie schnell erhalte ich meinen Zugang?', a: 'In der Regel erhalten Sie Ihre Zugangsdaten innerhalb weniger Minuten nach Zahlungseingang, zusammen mit einer Einrichtungsanleitung für Ihr Gerät.' },
+];
+---
+<Layout title={title} description={description}>
+  <Breadcrumbs items={[{ label: 'IPTV Abo kaufen' }]} />
+  <section class="section" style="padding-top:1.5rem;">
+    <div class="container" style="max-width:52rem;">
+      <p class="eyebrow">Bestellen</p>
+      <h1>IPTV Abo kaufen – in wenigen Minuten startklar</h1>
+      <p class="lead">Ein IPTV Abo zu kaufen war noch nie so einfach. Wählen Sie Ihr Paket, bestellen Sie per WhatsApp
+        und erhalten Sie Ihre Zugangsdaten meist innerhalb weniger Minuten – inklusive Einrichtungsanleitung.</p>
+
+      <h2 class="mt-4">So funktioniert die Bestellung</h2>
+      <ol style="padding-left:1.2rem;">
+        <li style="margin:.6rem 0;">Passendes <a href="/iptv-subscription-plans/" style="color:hsl(var(--primary))">Paket</a> auswählen</li>
+        <li style="margin:.6rem 0;">Über WhatsApp bestellen und Zahlungsdetails erhalten</li>
+        <li style="margin:.6rem 0;">Zugangsdaten und <a href="/setup-guide/" style="color:hsl(var(--primary))">Einrichtungsanleitung</a> bekommen</li>
+        <li style="margin:.6rem 0;">App auf Ihrem Gerät einrichten und sofort streamen</li>
+      </ol>
+    </div>
+  </section>
+
+  <Pricing showSchema={false} />
+  <RelatedLinks alt={true} title="Vor dem Kauf ansehen" items={[
+    { ic: '⭐', label: 'Bester IPTV Service', path: '/best-iptv-service/', desc: 'Warum NoFreeze überzeugt.' },
+    { ic: '🏷️', label: 'Günstiges IPTV', path: '/cheap-iptv/', desc: 'Bestes Preis-Leistungs-Verhältnis.' },
+    { ic: '⚙️', label: 'Einrichtungsanleitung', path: '/setup-guide/', desc: 'Auf jedem Gerät einrichten.' },
+  ]} />
+  <FAQ items={faq} title="Häufige Fragen zum Kauf" />
+  <CtaBand />
+</Layout>

@@ -1,0 +1,76 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Pricing from '../components/Pricing.astro';
+import FAQ from '../components/FAQ.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { COUNTRIES } from '../data/countries';
+import { DEVICES } from '../data/devices';
+
+// Single root-level dynamic route for both country and device pages.
+// Explicit .astro pages (e.g. /best-iptv-service/) take precedence over this.
+export function getStaticPaths() {
+  const countryPaths = COUNTRIES.map((c) => ({ params: { slug: c.slug }, props: { kind: 'country', c } }));
+  const devicePaths = DEVICES.map((d) => ({ params: { slug: d.slug }, props: { kind: 'device', d } }));
+  return [...countryPaths, ...devicePaths];
+}
+const { kind } = Astro.props as any;
+const c = (Astro.props as any).c;
+const d = (Astro.props as any).d;
+---
+{kind === 'country' ? (
+  <Layout title={c.title} description={c.description}>
+    <Breadcrumbs items={[{ label: 'Länder', path: '/countries/' }, { label: `IPTV ${c.name}` }]} />
+    <section class="section" style="padding-top:1.5rem;">
+      <div class="container" style="max-width:52rem;">
+        <p class="eyebrow">{c.flag} IPTV {c.name}</p>
+        <h1>{c.h1}</h1>
+        <p class="lead">{c.intro}</p>
+        <ul class="check-list mt-2">{c.highlights.map((h: string) => <li>{h}</li>)}</ul>
+        <div class="mt-3" style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <a class="btn btn--primary btn--lg" href="/iptv-subscription-plans/">Pakete ansehen</a>
+          <a class="btn btn--outline btn--lg" href="/iptv-channels/">Kanalliste</a>
+        </div>
+      </div>
+    </section>
+    <Pricing showSchema={false} />
+    <RelatedLinks alt={true} title={`IPTV ${c.name} – passende Themen`} items={[
+      ...COUNTRIES.filter((x) => x.slug !== c.slug).slice(0, 3).map((x) => ({ ic: x.flag, label: `IPTV ${x.name}`, path: `/${x.slug}/`, desc: x.intro.slice(0, 90) + '…' })),
+      { ic: '⚽', label: 'IPTV Sport', path: '/iptv-sports/', desc: 'Live-Sport, NFL und Fußball weltweit.' },
+      { ic: '💳', label: 'Preise & Pakete', path: '/iptv-subscription-plans/', desc: 'Alle Abos ab 14,99 € pro Monat.' },
+      { ic: '🔥', label: 'IPTV für Firestick', path: '/iptv-for-firestick/', desc: 'In Minuten einrichten.' },
+    ]} />
+    <FAQ items={c.faq} title={`Häufige Fragen zu IPTV ${c.name}`} />
+    <CtaBand title={`IPTV ${c.name} jetzt starten`} waText={`Hallo, ich interessiere mich für IPTV in ${c.name}. Bitte senden Sie mir Infos.`} />
+  </Layout>
+) : (
+  <Layout title={d.title} description={d.description}>
+    <Breadcrumbs items={[{ label: 'Geräte', path: '/devices/' }, { label: d.name }]} />
+    <section class="section" style="padding-top:1.5rem;">
+      <div class="container" style="max-width:52rem;">
+        <p class="eyebrow">{d.icon} {d.name}</p>
+        <h1>{d.h1}</h1>
+        <p class="lead">{d.intro}</p>
+        <h2 class="mt-4">Einrichtung in {d.steps.length} Schritten</h2>
+        <ol style="padding-left:1.2rem;">{d.steps.map((s: string) => <li style="margin:.6rem 0;">{s}</li>)}</ol>
+        <h2 class="mt-4">Empfohlene Apps</h2>
+        <div class="tag-cloud">{d.apps.map((a: string) => <span class="tag">{a}</span>)}</div>
+        <div class="mt-4" style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <a class="btn btn--primary btn--lg" href="/iptv-subscription-plans/">Abo wählen</a>
+          <a class="btn btn--outline btn--lg" href="/setup-guide/">Volle Anleitung</a>
+        </div>
+      </div>
+    </section>
+    <Pricing showSchema={false} />
+    <RelatedLinks alt={true} title={`${d.name} – passende Themen`} items={[
+      ...DEVICES.filter((x) => x.slug !== d.slug).slice(0, 3).map((x) => ({ ic: x.icon, label: x.name, path: `/${x.slug}/`, desc: x.intro.slice(0, 90) + '…' })),
+      { ic: '⚙️', label: 'Einrichtungsanleitung', path: '/setup-guide/', desc: 'Alle Geräte Schritt für Schritt.' },
+      { ic: '💳', label: 'Preise & Pakete', path: '/iptv-subscription-plans/', desc: 'Abos ab 14,99 € pro Monat.' },
+      { ic: '🛠️', label: 'Buffering-Fix', path: '/blog/iptv-buffering-fix-guide-2026/', desc: 'Die besten Einstellungen gegen Ruckler.' },
+    ]} />
+    <FAQ items={d.faq} title={`Häufige Fragen zu ${d.name}`} />
+    <CtaBand title={`NoFreeze IPTV auf ${d.name} starten`} waText={`Hallo, ich möchte NoFreeze IPTV auf ${d.name} nutzen. Bitte senden Sie mir Infos.`} />
+    <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@type': 'HowTo', name: d.h1, description: d.description, step: d.steps.map((s: string, i: number) => ({ '@type': 'HowToStep', position: i + 1, text: s })) })} />
+  </Layout>
+)}

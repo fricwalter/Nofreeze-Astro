@@ -1,0 +1,43 @@
+---
+import { whatsappLink } from '../data/site';
+const devices = [
+  { ic: '📺', label: 'Smart TV' },
+  { ic: '💻', label: 'Laptop/PC' },
+  { ic: '📱', label: 'Android' },
+  { ic: '🍎', label: 'iOS' },
+  { ic: '🔥', label: 'Firestick' },
+];
+---
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="pill">★ Bestes IPTV 2026 · Über 50.000 Kanäle</span>
+      <h1>IPTV Abo für Sport, Filme & Serien – <span class="gradient-text">überall, jederzeit</span></h1>
+      <p class="lead">Genießen Sie hervorragende Bildqualität in bis zu 4K und 8K auf all Ihren Geräten – weltweit.
+        Durchstöbern Sie unsere <a href="/iptv-channels/" style="color:hsl(var(--primary))">komplette Kanalliste</a>
+        oder folgen Sie der <a href="/setup-guide/" style="color:hsl(var(--primary))">Einrichtungsanleitung</a>.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.75rem;">
+        <a class="btn btn--primary btn--lg" href="/iptv-subscription-plans/">Pakete ansehen</a>
+        <a class="btn btn--outline btn--lg" href={whatsappLink('Hallo, ich möchte ein NoFreeze IPTV Abo bestellen.')} target="_blank" rel="noopener nofollow">Jetzt bestellen</a>
+      </div>
+      <div class="device-row">
+        {devices.map((d) => (
+          <div class="device-chip"><span class="ic">{d.ic}</span><span>{d.label}</span></div>
+        ))}
+      </div>
+    </div>
+    <div class="center">
+      <div class="card glow" style="border-radius:1.5rem;padding:2rem;">
+        <div style="font-size:4rem;line-height:1;">⚽🎬📺</div>
+        <p style="font-size:1.4rem;font-weight:800;margin:1rem 0 .25rem;">+50.000 Live-Kanäle</p>
+        <p class="muted" style="margin:0;">+70.000 Filme & Serien · HD/4K/8K</p>
+        <div class="trust-strip mt-3">
+          <div class="trust-item"><div class="num gradient-text">4K</div><div class="muted" style="font-size:.8rem">Qualität</div></div>
+          <div class="trust-item"><div class="num gradient-text">99,9%</div><div class="muted" style="font-size:.8rem">Uptime</div></div>
+          <div class="trust-item"><div class="num gradient-text">24/7</div><div class="muted" style="font-size:.8rem">Support</div></div>
+          <div class="trust-item"><div class="num gradient-text">30T</div><div class="muted" style="font-size:.8rem">Garantie</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

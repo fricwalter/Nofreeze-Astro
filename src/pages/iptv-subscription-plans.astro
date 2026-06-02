@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Pricing from '../components/Pricing.astro';
+import FAQ from '../components/FAQ.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { PLAN_FEATURES } from '../data/pricing';
+
+const title = 'IPTV Abo Pakete & Preise 2026 | NoFreeze IPTV Subscription Plans';
+const description = 'IPTV Abo Pakete von NoFreeze IPTV: 1, 3, 6 oder 12 Monate ab 14,99 €. Über 50.000 Kanäle, 4K, 30 Tage Garantie. Transparente Preise ohne versteckte Kosten.';
+const faq = [
+  { q: 'Welches IPTV Paket ist das beste?', a: 'Das 3-Monats-Paket ist die beliebteste Wahl für den Einstieg, während das 12-Monats-Paket mit nur 7,00 € pro Monat das beste Preis-Leistungs-Verhältnis bietet.' },
+  { q: 'Sind in allen Paketen die gleichen Inhalte enthalten?', a: 'Ja, alle Pakete enthalten den vollen Funktionsumfang: über 50.000 Kanäle, mehr als 70.000 VOD-Titel, 4K-Qualität und Support. Es unterscheidet sich nur die Laufzeit.' },
+  { q: 'Kann ich mein Paket verlängern?', a: 'Selbstverständlich. Kurz vor Ablauf können Sie Ihr Abo bequem per WhatsApp verlängern, ohne Ihre Einrichtung neu vornehmen zu müssen.' },
+];
+---
+<Layout title={title} description={description}>
+  <Breadcrumbs items={[{ label: 'Preise & Pakete' }]} />
+  <section class="section" style="padding-top:1.5rem;">
+    <div class="container" style="max-width:52rem;">
+      <p class="eyebrow">Preise</p>
+      <h1>IPTV Abo Pakete & Preise 2026</h1>
+      <p class="lead">Transparente Pakete für jeden Bedarf – von 1 Monat zum Ausprobieren bis 12 Monate zum besten Preis.
+        Jedes NoFreeze IPTV Paket enthält den vollen Funktionsumfang ohne versteckte Kosten.</p>
+      <h2 class="mt-4">In jedem Paket enthalten</h2>
+      <ul class="check-list">{PLAN_FEATURES.map((f) => <li>{f}</li>)}</ul>
+    </div>
+  </section>
+
+  <Pricing />
+  <RelatedLinks alt={true} title="Mehr erfahren" items={[
+    { ic: '💳', label: 'IPTV Abo kaufen', path: '/buy-iptv-subscription/', desc: 'So bestellen Sie in Minuten.' },
+    { ic: '🏷️', label: 'Günstiges IPTV', path: '/cheap-iptv/', desc: 'Bestes Preis-Leistungs-Verhältnis.' },
+    { ic: '📺', label: 'TV-Kanäle', path: '/iptv-channels/', desc: 'Über 50.000 Sender im Überblick.' },
+  ]} />
+  <FAQ items={faq} title="Häufige Fragen zu den Paketen" />
+  <CtaBand />
+</Layout>

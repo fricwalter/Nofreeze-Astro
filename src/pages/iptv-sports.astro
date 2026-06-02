@@ -1,0 +1,46 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Pricing from '../components/Pricing.astro';
+import FAQ from '../components/FAQ.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const title = 'IPTV Sport 2026 | NFL, Fußball & Live-Sport Kanäle in 4K – NoFreeze';
+const description = 'IPTV für Live-Sport 2026: NFL, Fußball, NBA, MLB, NHL, Champions League und PPV-Events in HD und 4K. Bester IPTV Service für Sportfans ohne Buffering.';
+const sports = ['Fußball (Bundesliga, Premier League, Champions League)', 'NFL & American Football', 'NBA Basketball', 'MLB Baseball', 'NHL Eishockey', 'Formel 1 & Motorsport', 'Tennis & Grand Slams', 'Boxen, UFC & PPV-Events'];
+const faq = [
+  { q: 'Kann ich die NFL mit IPTV schauen?', a: 'US-Sport inklusive NFL-Spielen gehört zu den meistgenutzten Inhalten. Für ruckelfreies Streaming in 4K empfehlen wir mindestens 25 Mbit/s.' },
+  { q: 'Welche Fußball-Ligen sind verfügbar?', a: 'Beliebte Ligen wie Bundesliga, Premier League, La Liga, Serie A und die Champions League gehören zu den am häufigsten gestreamten Inhalten. Eine genaue Liste sendet Ihnen unser Support.' },
+  { q: 'Gibt es PPV-Events?', a: 'Ja, große PPV-Events aus Boxen und UFC gehören zum Angebot. Für Live-Events empfehlen wir eine stabile Verbindung.' },
+];
+---
+<Layout title={title} description={description}>
+  <Breadcrumbs items={[{ label: 'IPTV Sport' }]} />
+  <section class="section" style="padding-top:1.5rem;">
+    <div class="container" style="max-width:52rem;">
+      <p class="eyebrow">Sport</p>
+      <h1>IPTV Sport 2026 – NFL, Fußball & Live-Sport in 4K</h1>
+      <p class="lead">Verpassen Sie kein Spiel: NoFreeze IPTV bringt Ihnen Live-Sport aus aller Welt – von der NFL über
+        Fußball-Topligen bis zu NBA, NHL, Formel 1 und PPV-Events. Alles in stabiler HD- und 4K-Qualität ohne Buffering.</p>
+
+      <h2 class="mt-4">Sport, der dich erwartet</h2>
+      <ul class="check-list">{sports.map((s) => <li>{s}</li>)}</ul>
+
+      <h2 class="mt-4">Sport ohne Buffering genießen</h2>
+      <p>Gerade bei Live-Sport ist eine stabile Verbindung entscheidend. NoFreeze IPTV setzt auf Anti-Buffering-Server.
+        Tipps für flüssiges Streaming finden Sie in unserem
+        <a href="/blog/iptv-buffering-fix-guide-2026/" style="color:hsl(var(--primary))">Buffering-Fix-Guide</a> sowie in der
+        <a href="/blog/best-iptv-live-sports-nfl-2026/" style="color:hsl(var(--primary))">NFL-Streaming-Anleitung</a>.</p>
+    </div>
+  </section>
+
+  <Pricing showSchema={false} />
+  <RelatedLinks alt={true} title="Passende Seiten" items={[
+    { ic: '📺', label: 'TV-Kanäle', path: '/iptv-channels/', desc: 'Über 50.000 Live-Sender.' },
+    { ic: '🇺🇸', label: 'IPTV USA', path: '/iptv-usa/', desc: 'US-Sport und NFL live.' },
+    { ic: '🔥', label: 'IPTV für Firestick', path: '/iptv-for-firestick/', desc: 'Sport flüssig auf dem TV.' },
+  ]} />
+  <FAQ items={faq} title="Häufige Fragen zu IPTV Sport" />
+  <CtaBand title="Live-Sport ohne Buffering streamen" waText="Hallo, ich möchte NoFreeze IPTV für Live-Sport nutzen. Bitte senden Sie mir Infos." />
+</Layout>

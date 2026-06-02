@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Pricing from '../components/Pricing.astro';
+import FAQ from '../components/FAQ.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const title = 'Günstiges IPTV 2026 | Cheap IPTV ab 7,00 € pro Monat – NoFreeze';
+const description = 'Günstiges IPTV ohne Qualitätsverlust: NoFreeze IPTV ab nur 7,00 € pro Monat mit über 50.000 Kanälen, 4K und 30 Tage Garantie. Bestes günstiges IPTV 2026.';
+const faq = [
+  { q: 'Ist günstiges IPTV schlechter?', a: 'Nein. Günstig bedeutet bei NoFreeze IPTV nicht weniger Qualität. Durch das 12-Monats-Paket zahlen Sie nur 7,00 € pro Monat und erhalten trotzdem den vollen Funktionsumfang in 4K.' },
+  { q: 'Was ist das günstigste Paket?', a: 'Pro Monat am günstigsten ist das 12-Monats-Paket für 83,99 € – das entspricht nur 7,00 € pro Monat. Zum Ausprobieren startet das 1-Monats-Paket bei 14,99 €.' },
+  { q: 'Gibt es versteckte Kosten?', a: 'Nein, alle Preise sind transparent und beinhalten den vollen Funktionsumfang. Es gibt keine versteckten Gebühren.' },
+];
+---
+<Layout title={title} description={description}>
+  <Breadcrumbs items={[{ label: 'Günstiges IPTV' }]} />
+  <section class="section" style="padding-top:1.5rem;">
+    <div class="container" style="max-width:52rem;">
+      <p class="eyebrow">Preis-Leistung</p>
+      <h1>Günstiges IPTV 2026 – ab nur 7,00 € pro Monat</h1>
+      <p class="lead">Premium-Qualität muss nicht teuer sein. Mit dem 12-Monats-Paket von NoFreeze IPTV streamen Sie
+        für nur 7,00 € pro Monat über 50.000 Kanäle und 70.000 VOD-Titel in 4K – mit voller Funktion und 30 Tage Garantie.</p>
+
+      <h2 class="mt-4">Warum NoFreeze günstiges IPTV bietet, ohne zu sparen</h2>
+      <ul class="check-list">
+        <li>Voller Funktionsumfang in jedem Paket – auch im günstigsten</li>
+        <li>Keine versteckten Kosten, transparente Preise</li>
+        <li>4K-Qualität und stabile Server ohne Aufpreis</li>
+        <li>30 Tage Geld-zurück-Garantie für volle Sicherheit</li>
+      </ul>
+    </div>
+  </section>
+
+  <Pricing showSchema={false} />
+  <RelatedLinks alt={true} title="Passende Seiten" items={[
+    { ic: '💳', label: 'Preise & Pakete', path: '/iptv-subscription-plans/', desc: 'Alle Laufzeiten im Vergleich.' },
+    { ic: '⭐', label: 'Bester IPTV Service', path: '/best-iptv-service/', desc: 'Qualität, die überzeugt.' },
+    { ic: '🇨🇦', label: 'IPTV Kanada', path: '/iptv-canada/', desc: 'Günstiges IPTV für Kanada.' },
+  ]} />
+  <FAQ items={faq} title="Häufige Fragen zu günstigem IPTV" />
+  <CtaBand />
+</Layout>

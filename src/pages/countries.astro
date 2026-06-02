@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaBand from '../components/CtaBand.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { COUNTRIES } from '../data/countries';
+
+const title = 'IPTV nach Ländern 2026 | USA, UK, Kanada, Deutschland & mehr';
+const description = 'IPTV Service nach Ländern und Städten: USA, UK, Kanada, Australien, Deutschland, Frankreich und mehr. Lokale Sender, Sport und internationale Kanäle in 4K.';
+const countriesOnly = COUNTRIES.filter((c) => !c.region);
+const regions = COUNTRIES.filter((c) => c.region);
+---
+<Layout title={title} description={description}>
+  <Breadcrumbs items={[{ label: 'Länder' }]} />
+  <section class="section" style="padding-top:1.5rem;">
+    <div class="container" style="max-width:52rem;">
+      <p class="eyebrow">Länder-Hub</p>
+      <h1>IPTV nach Ländern – lokaler IPTV Service weltweit</h1>
+      <p class="lead">Egal ob USA, UK, Kanada oder Deutschland: NoFreeze IPTV liefert lokale Sender, Premium-Sport
+        und tausende internationale Kanäle in stabiler 4K-Qualität. Wählen Sie Ihr Land oder Ihre Region.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="center">Länder</h2>
+      <div class="grid grid-3 mt-3">
+        {countriesOnly.map((c) => (
+          <a class="card card-hover link-card" href={`/${c.slug}/`}>
+            <div class="ic">{c.flag}</div><h3>IPTV {c.name}</h3>
+            <p>{c.intro.slice(0, 110)}…</p>
+            <p style="color:hsl(var(--primary));font-weight:700;margin-top:.6rem;">Ansehen →</p>
+          </a>
+        ))}
+      </div>
+
+      <h2 class="center mt-4">Städte & Regionen</h2>
+      <div class="grid grid-3 mt-3">
+        {regions.map((c) => (
+          <a class="card card-hover link-card" href={`/${c.slug}/`}>
+            <div class="ic">{c.flag}</div><h3>IPTV {c.name}</h3>
+            <p>{c.intro.slice(0, 110)}…</p>
+            <p style="color:hsl(var(--primary));font-weight:700;margin-top:.6rem;">Ansehen →</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <RelatedLinks alt={true} title="Weitere Themen" items={[
+    { ic: '⚽', label: 'IPTV Sport', path: '/iptv-sports/', desc: 'NFL, Fußball und Live-Sport weltweit.' },
+    { ic: '📺', label: 'TV-Kanäle', path: '/iptv-channels/', desc: 'Über 50.000 Live-Sender im Überblick.' },
+    { ic: '💳', label: 'Preise & Pakete', path: '/iptv-subscription-plans/', desc: 'Abos ab 14,99 € pro Monat.' },
+  ]} />
+  <CtaBand />
+</Layout>

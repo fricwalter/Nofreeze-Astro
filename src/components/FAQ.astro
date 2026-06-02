@@ -1,0 +1,32 @@
+---
+import type { FaqItem } from '../data/faq';
+const { items, title = 'Häufige Fragen (FAQ)', heading = 'h2' } = Astro.props as {
+  items: FaqItem[]; title?: string; heading?: string;
+};
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: items.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+const Heading = heading;
+---
+<section class="section section--alt" id="faq">
+  <div class="container">
+    <div class="section-head center">
+      <Heading>{title}</Heading>
+    </div>
+    <div style="max-width:48rem;margin:0 auto;">
+      {items.map((f) => (
+        <details class="faq-item">
+          <summary>{f.q}</summary>
+          <div class="faq-a">{f.a}</div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+<script type="application/ld+json" set:html={JSON.stringify(jsonld)} />

@@ -1,0 +1,25 @@
+---
+import { SITE } from '../data/site';
+export interface Crumb { label: string; path?: string; }
+const { items = [] } = Astro.props as { items: Crumb[] };
+const all: Crumb[] = [{ label: 'Start', path: '/' }, ...items];
+const jsonld = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: all.map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: c.label,
+    ...(c.path ? { item: SITE.url + c.path } : {}),
+  })),
+};
+---
+<nav class="breadcrumbs container" aria-label="Breadcrumb">
+  {all.map((c, i) => (
+    <>
+      {c.path && i < all.length - 1 ? <a href={c.path}>{c.label}</a> : <span class="muted" style="margin:0">{c.label}</span>}
+      {i < all.length - 1 && <span>/</span>}
+    </>
+  ))}
+</nav>
+<script type="application/ld+json" set:html={JSON.stringify(jsonld)} />

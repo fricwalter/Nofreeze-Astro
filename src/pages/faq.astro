@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import FAQ from '../components/FAQ.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { GENERAL_FAQ } from '../data/faq';
+
+const title = 'IPTV FAQ 2026 | Häufige Fragen zu NoFreeze IPTV';
+const description = 'Häufige Fragen zu NoFreeze IPTV: Geräte, Einrichtung, Geld-zurück-Garantie, Internetgeschwindigkeit, Legalität und Zahlung. Alle Antworten auf einen Blick.';
+---
+<Layout title={title} description={description}>
+  <Breadcrumbs items={[{ label: 'FAQ' }]} />
+  <section class="section" style="padding-top:1.5rem;">
+    <div class="container" style="max-width:52rem;">
+      <p class="eyebrow">Hilfe</p>
+      <h1>Häufig gestellte Fragen zu IPTV</h1>
+      <p class="lead">Hier finden Sie Antworten auf die wichtigsten Fragen rund um NoFreeze IPTV – von der Einrichtung
+        über Geräte bis zur Geld-zurück-Garantie. Ihre Frage ist nicht dabei? Unser <a href="/contact/" style="color:hsl(var(--primary))">Support</a> hilft gern.</p>
+    </div>
+  </section>
+  <FAQ items={GENERAL_FAQ} title="Alle Fragen & Antworten" heading="h2" />
+  <RelatedLinks title="Mehr erfahren" items={[
+    { ic: '⚙️', label: 'Einrichtungsanleitung', path: '/setup-guide/', desc: 'Auf jedem Gerät einrichten.' },
+    { ic: '🔥', label: 'IPTV für Firestick', path: '/iptv-for-firestick/', desc: 'Beliebtestes Gerät einrichten.' },
+    { ic: '💳', label: 'Preise & Pakete', path: '/iptv-subscription-plans/', desc: 'Abos ab 14,99 €.' },
+  ]} />
+  <CtaBand />
+</Layout>

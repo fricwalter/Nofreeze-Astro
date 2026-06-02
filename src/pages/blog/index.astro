@@ -1,0 +1,36 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CtaBand from '../../components/CtaBand.astro';
+
+const title = 'IPTV Blog 2026 | Ratgeber, Tipps & Anleitungen – NoFreeze IPTV';
+const description = 'NoFreeze IPTV Blog: aktuelle Ratgeber und Anleitungen für 2026 – bester IPTV Service, Firestick ohne Buffering, NFL-Streaming, Legalität, Player-Apps und mehr.';
+const posts = (await getCollection('blog')).sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+---
+<Layout title={title} description={description}>
+  <Breadcrumbs items={[{ label: 'Blog' }]} />
+  <section class="section" style="padding-top:1.5rem;">
+    <div class="container" style="max-width:52rem;">
+      <p class="eyebrow">Blog</p>
+      <h1>IPTV Blog – Ratgeber & Anleitungen für 2026</h1>
+      <p class="lead">Aktuelle Tipps rund um IPTV: Geräte, Sport, Streaming-Qualität, Legalität und die besten Apps.
+        Lernen Sie, wie Sie das Beste aus Ihrem NoFreeze IPTV Abo herausholen.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-3">
+        {posts.map((p) => (
+          <a class="card card-hover link-card" href={`/blog/${p.slug}/`}>
+            <p class="muted" style="font-size:.8rem;margin:0 0 .4rem;">{new Date(p.data.date).toLocaleDateString('de-DE', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+            <h3>{p.data.title}</h3>
+            <p>{p.data.excerpt}</p>
+            <p style="color:hsl(var(--primary));font-weight:700;margin-top:.6rem;">Weiterlesen →</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+  <CtaBand />
+</Layout>

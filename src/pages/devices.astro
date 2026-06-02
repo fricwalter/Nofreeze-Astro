@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaBand from '../components/CtaBand.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { DEVICES } from '../data/devices';
+
+const title = 'IPTV Geräte & Apps 2026 | Firestick, Smart TV, Apple TV & mehr';
+const description = 'IPTV auf Firestick, Samsung Smart TV, Apple TV, Roku, Android TV Box, Kodi und VLC einrichten. Anleitungen für IPTV Smarters Pro, TiviMate und mehr.';
+---
+<Layout title={title} description={description}>
+  <Breadcrumbs items={[{ label: 'Geräte' }]} />
+  <section class="section" style="padding-top:1.5rem;">
+    <div class="container" style="max-width:52rem;">
+      <p class="eyebrow">Geräte-Hub</p>
+      <h1>IPTV auf jedem Gerät einrichten</h1>
+      <p class="lead">NoFreeze IPTV funktioniert auf nahezu jedem Gerät. Wählen Sie Ihr Gerät und folgen Sie der
+        Schritt-für-Schritt-Anleitung – von Firestick über Smart TV bis Apple TV, Kodi und VLC.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-3">
+        {DEVICES.map((d) => (
+          <a class="card card-hover link-card" href={`/${d.slug}/`}>
+            <div class="ic">{d.icon}</div><h3>{d.name}</h3>
+            <p>{d.intro.slice(0, 110)}…</p>
+            <p style="color:hsl(var(--primary));font-weight:700;margin-top:.6rem;">Anleitung →</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <RelatedLinks alt={true} title="Weitere Themen" items={[
+    { ic: '⚙️', label: 'Einrichtungsanleitung', path: '/setup-guide/', desc: 'Generelle Einrichtung Schritt für Schritt.' },
+    { ic: '🛠️', label: 'Buffering-Fix', path: '/blog/iptv-buffering-fix-guide-2026/', desc: 'Beste Einstellungen gegen Ruckler.' },
+    { ic: '💳', label: 'Preise & Pakete', path: '/iptv-subscription-plans/', desc: 'Abos ab 14,99 € pro Monat.' },
+  ]} />
+  <CtaBand />
+</Layout>

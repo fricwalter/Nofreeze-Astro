@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { SITE } from '../data/site';
+const title = 'Datenschutzerklärung | NoFreeze IPTV';
+const description = 'Datenschutzerklärung von NoFreeze IPTV: Welche Daten wir erheben, wie wir sie verwenden, speichern und schützen sowie Ihre Rechte als Nutzer.';
+---
+<Layout title={title} description={description} noindex={false}>
+  <Breadcrumbs items={[{ label: 'Datenschutz' }]} />
+  <section class="section" style="padding-top:1.5rem;">
+    <div class="container prose">
+      <h1>Datenschutzerklärung</h1>
+      <p class="muted">Zuletzt aktualisiert: Januar 2026</p>
+      <p>Der Schutz Ihrer persönlichen Daten ist uns wichtig. Diese Datenschutzerklärung informiert Sie darüber,
+        welche Daten {SITE.brand} ({SITE.domain}) erhebt, wie wir sie verwenden und welche Rechte Ihnen zustehen.</p>
+
+      <h2>1. Verantwortlicher</h2>
+      <p>Verantwortlich für die Datenverarbeitung ist der Betreiber von {SITE.domain}. Kontakt: {SITE.email}.</p>
+
+      <h2>2. Welche Daten wir erheben</h2>
+      <ul>
+        <li>Kontaktdaten, die Sie uns aktiv übermitteln (z. B. per WhatsApp oder E-Mail)</li>
+        <li>Bestelldaten, die zur Bereitstellung des Dienstes nötig sind</li>
+        <li>Technische Zugriffsdaten (z. B. IP-Adresse, Browsertyp) zur Sicherstellung des Betriebs</li>
+      </ul>
+
+      <h2>3. Zweck der Verarbeitung</h2>
+      <p>Wir verarbeiten Ihre Daten ausschließlich, um Ihre Anfragen zu beantworten, Bestellungen abzuwickeln,
+        den Dienst bereitzustellen und gesetzliche Pflichten zu erfüllen.</p>
+
+      <h2>4. Weitergabe an Dritte</h2>
+      <p>Eine Weitergabe Ihrer Daten erfolgt nur, soweit dies zur Vertragserfüllung erforderlich ist oder Sie
+        eingewilligt haben. Diese Website kann Drittdienste wie den Google-Übersetzer einbinden; dabei können
+        Daten an Google übertragen werden.</p>
+
+      <h2>5. Speicherdauer</h2>
+      <p>Wir speichern personenbezogene Daten nur so lange, wie es für die genannten Zwecke erforderlich ist oder
+        gesetzliche Aufbewahrungsfristen es vorschreiben.</p>
+
+      <h2>6. Ihre Rechte</h2>
+      <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung sowie auf
+        Datenübertragbarkeit. Zur Ausübung Ihrer Rechte kontaktieren Sie uns unter {SITE.email}.</p>
+
+      <h2>7. Kontakt</h2>
+      <p>Bei Fragen zum Datenschutz erreichen Sie uns über unsere <a href="/contact/">Kontaktseite</a>.
+        Weitere Informationen finden Sie in unseren <a href="/terms-of-service/">AGB</a>.</p>
+    </div>
+  </section>
+</Layout>

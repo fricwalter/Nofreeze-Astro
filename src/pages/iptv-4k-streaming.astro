@@ -1,0 +1,44 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import Pricing from '../components/Pricing.astro';
+import FAQ from '../components/FAQ.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import CtaBand from '../components/CtaBand.astro';
+
+const title = 'IPTV 4K Streaming 2026 | 4K HDR ohne Buffering – NoFreeze IPTV';
+const description = 'IPTV in 4K und 8K: gestochen scharfes Streaming mit HDR auf Smart TV, Firestick und Apple TV. Stabile Server ohne Buffering. Bestes 4K IPTV 2026.';
+const faq = [
+  { q: 'Welche Internetgeschwindigkeit brauche ich für 4K?', a: 'Für stabiles 4K-Streaming empfehlen wir mindestens 25 Mbit/s. Wichtiger als reine Geschwindigkeit ist jedoch eine stabile, möglichst kabelgebundene Verbindung.' },
+  { q: 'Welche Geräte unterstützen 4K-IPTV?', a: 'Aktuelle Smart TVs, Apple TV 4K, leistungsfähige Android-Boxen und der Fire TV Stick 4K geben 4K-Inhalte flüssig wieder.' },
+  { q: 'Ist auch 8K möglich?', a: 'Je nach Inhalt und Gerät ist auch 8K-Streaming möglich. Das Angebot an echten 8K-Inhalten ist aktuell jedoch noch begrenzt.' },
+];
+---
+<Layout title={title} description={description}>
+  <Breadcrumbs items={[{ label: '4K Streaming' }]} />
+  <section class="section" style="padding-top:1.5rem;">
+    <div class="container" style="max-width:52rem;">
+      <p class="eyebrow">Bildqualität</p>
+      <h1>IPTV 4K Streaming – gestochen scharf & ohne Buffering</h1>
+      <p class="lead">Erleben Sie Ihre Lieblingsinhalte in maximaler Qualität. NoFreeze IPTV streamt in HD, FHD, 4K und
+        teilweise 8K – mit HDR-Unterstützung und stabilen Anti-Buffering-Servern für ein flüssiges Bild.</p>
+
+      <h2 class="mt-4">So holen Sie das Maximum heraus</h2>
+      <ul class="check-list">
+        <li>Mindestens 25 Mbit/s für stabiles 4K-Streaming</li>
+        <li>Möglichst LAN-Kabel statt WLAN für Live-Inhalte</li>
+        <li>4K-fähiges Gerät wie Fire TV Stick 4K oder Apple TV 4K</li>
+        <li>Aktuelle IPTV-App wie TiviMate oder IPTV Smarters Pro</li>
+      </ul>
+    </div>
+  </section>
+
+  <Pricing showSchema={false} />
+  <RelatedLinks alt={true} title="Passende Seiten" items={[
+    { ic: '🎬', label: 'Filme & Serien (VOD)', path: '/iptv-movies-vod/', desc: '70.000 Titel in 4K.' },
+    { ic: '🔥', label: 'IPTV für Firestick', path: '/iptv-for-firestick/', desc: '4K-Streaming einrichten.' },
+    { ic: '🛠️', label: 'Buffering-Fix-Guide', path: '/blog/iptv-buffering-fix-guide-2026/', desc: 'Beste Einstellungen.' },
+  ]} />
+  <FAQ items={faq} title="Häufige Fragen zu 4K Streaming" />
+  <CtaBand />
+</Layout>

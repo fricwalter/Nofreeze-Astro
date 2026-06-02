@@ -1,0 +1,28 @@
+---
+import { NAV_PRIMARY, whatsappLink } from '../data/site';
+const path = Astro.url.pathname;
+---
+<header class="site-header">
+  <div class="container nav">
+    <a href="/" class="brand" aria-label="NoFreeze IPTV Startseite">
+      <span class="gradient-text">NoFreeze</span>
+    </a>
+    <nav class="nav-links" id="navLinks" aria-label="Hauptnavigation">
+      {NAV_PRIMARY.map((item) => (
+        <a href={item.path} aria-current={path === item.path ? 'page' : undefined}>{item.label}</a>
+      ))}
+    </nav>
+    <div class="nav-cta">
+      <div id="google_translate_element" class="lang-select" title="Sprache wählen"></div>
+      <a class="btn btn--primary" href={whatsappLink('Hallo, ich interessiere mich für ein IPTV-Abo. Bitte senden Sie mir Infos.')} target="_blank" rel="noopener nofollow">Jetzt bestellen</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Menü" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+<script is:inline>
+  document.getElementById('menuToggle')?.addEventListener('click', function () {
+    const nav = document.getElementById('navLinks');
+    const open = nav.classList.toggle('open');
+    this.setAttribute('aria-expanded', String(open));
+  });
+</script>

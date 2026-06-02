@@ -1,0 +1,22 @@
+---
+// Internal linking block — every page links to 2-4+ related pages
+export interface RelatedItem { label: string; path: string; desc?: string; ic?: string; }
+const { items, title = 'Das könnte Sie auch interessieren', alt = false } = Astro.props as {
+  items: RelatedItem[]; title?: string; alt?: boolean;
+};
+---
+<section class={`section ${alt ? 'section--alt' : ''}`}>
+  <div class="container">
+    <div class="section-head center"><h2>{title}</h2></div>
+    <div class="grid grid-3">
+      {items.map((i) => (
+        <a class="card card-hover link-card" href={i.path}>
+          {i.ic && <div class="ic">{i.ic}</div>}
+          <h3>{i.label}</h3>
+          {i.desc && <p>{i.desc}</p>}
+          <p style="color:hsl(var(--primary));font-weight:700;margin-top:.6rem;">Mehr erfahren →</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

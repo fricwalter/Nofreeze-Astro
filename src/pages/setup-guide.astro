@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import FAQ from '../components/FAQ.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { DEVICES } from '../data/devices';
+
+const title = 'IPTV Einrichtungsanleitung 2026 | Setup für alle Geräte – NoFreeze';
+const description = 'IPTV einrichten 2026: Schritt-für-Schritt-Anleitung für Firestick, Smart TV, Apple TV, Android, Kodi und VLC mit IPTV Smarters Pro und TiviMate.';
+const faq = [
+  { q: 'Wie richte ich IPTV ein?', a: 'Installieren Sie eine kompatible App (z. B. IPTV Smarters Pro oder TiviMate), geben Sie Ihre Zugangsdaten von NoFreeze IPTV ein und laden Sie die Kanalliste. Detaillierte Anleitungen finden Sie pro Gerät weiter oben.' },
+  { q: 'Welche App soll ich nutzen?', a: 'IPTV Smarters Pro und TiviMate sind die beliebtesten Apps. TiviMate bietet eine besonders komfortable EPG-Oberfläche, ist aber teils auf Android beschränkt.' },
+  { q: 'Was tun bei Problemen?', a: 'Prüfen Sie zuerst Zugangsdaten und Internetverbindung. Bei Buffering hilft unser Buffering-Fix-Guide. Andernfalls unterstützt Sie unser Support per WhatsApp.' },
+];
+---
+<Layout title={title} description={description}>
+  <Breadcrumbs items={[{ label: 'Einrichtungsanleitung' }]} />
+  <section class="section" style="padding-top:1.5rem;">
+    <div class="container" style="max-width:52rem;">
+      <p class="eyebrow">Setup</p>
+      <h1>IPTV Einrichtungsanleitung für alle Geräte</h1>
+      <p class="lead">In wenigen Minuten startklar: Wählen Sie Ihr Gerät und folgen Sie der passenden Anleitung.
+        Nach der Bestellung erhalten Sie Ihre Zugangsdaten – danach richten Sie NoFreeze IPTV ganz einfach ein.</p>
+
+      <h2 class="mt-4">Allgemeine Schritte</h2>
+      <ol style="padding-left:1.2rem;">
+        <li style="margin:.6rem 0;">Kompatible IPTV-App auf Ihrem Gerät installieren</li>
+        <li style="margin:.6rem 0;">App öffnen und Zugangsdaten (Xtream Codes oder M3U-URL) eingeben</li>
+        <li style="margin:.6rem 0;">Kanalliste und EPG laden lassen</li>
+        <li style="margin:.6rem 0;">Favoriten anlegen und mit dem Streaming starten</li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head center"><h2>Anleitung nach Gerät</h2></div>
+      <div class="grid grid-3">
+        {DEVICES.map((d) => (
+          <a class="card card-hover link-card" href={`/${d.slug}/`}>
+            <div class="ic">{d.icon}</div><h3>{d.name}</h3>
+            <p style="color:hsl(var(--primary));font-weight:700;margin-top:.6rem;">Anleitung →</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FAQ items={faq} title="Häufige Fragen zur Einrichtung" />
+  <RelatedLinks title="Mehr erfahren" items={[
+    { ic: '🛠️', label: 'Buffering-Fix-Guide', path: '/blog/iptv-buffering-fix-guide-2026/', desc: 'Beste Einstellungen gegen Ruckler.' },
+    { ic: '⚙️', label: 'IPTV Smarters Pro Setup', path: '/iptv-smarters-pro-setup/', desc: 'Beliebteste App einrichten.' },
+    { ic: '💳', label: 'Preise & Pakete', path: '/iptv-subscription-plans/', desc: 'Abos ab 14,99 €.' },
+  ]} />
+  <CtaBand />
+</Layout>

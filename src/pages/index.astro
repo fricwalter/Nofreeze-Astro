@@ -1,0 +1,69 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import TrustStrip from '../components/TrustStrip.astro';
+import Pricing from '../components/Pricing.astro';
+import FAQ from '../components/FAQ.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { GENERAL_FAQ } from '../data/faq';
+import { SITE } from '../data/site';
+
+const title = 'NoFreeze IPTV 2026 | Bestes IPTV Abo für Sport, Filme & 4K Streaming';
+const description = SITE.description;
+
+const deviceLinks = [
+  { ic: '🔥', label: 'IPTV für Firestick', path: '/iptv-for-firestick/', desc: 'In Minuten einrichten – ohne Buffering streamen.' },
+  { ic: '🖥️', label: 'Samsung Smart TV', path: '/iptv-for-samsung-smart-tv/', desc: 'Direkt am TV, ganz ohne zusätzliche Box.' },
+  { ic: '🍎', label: 'Apple TV', path: '/iptv-apple-tv/', desc: 'Flüssiges 4K-Streaming mit IPTV Smarters.' },
+];
+const contentLinks = [
+  { ic: '⚽', label: 'Sport & NFL', path: '/iptv-sports/', desc: 'Live-Sport, NFL, Fußball und PPV-Events.' },
+  { ic: '🎬', label: 'Filme & Serien', path: '/iptv-movies-vod/', desc: 'Über 70.000 VOD-Titel auf Abruf.' },
+  { ic: '🌍', label: 'Internationale Kanäle', path: '/countries/', desc: 'USA, UK, Deutschland und viele mehr.' },
+];
+---
+<Layout title={title} description={description}>
+  <Hero />
+  <TrustStrip />
+  <Pricing />
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head center">
+        <p class="eyebrow">Kompatibilität</p>
+        <h2>Auf <span class="gradient-text">allen Geräten</span> streamen</h2>
+        <p class="lead">NoFreeze IPTV läuft auf Firestick, Smart TV, Apple TV, Android, iOS, Windows und mehr.</p>
+      </div>
+      <div class="grid grid-3">
+        {deviceLinks.map((d) => (
+          <a class="card card-hover link-card" href={d.path}>
+            <div class="ic">{d.ic}</div><h3>{d.label}</h3><p>{d.desc}</p>
+            <p style="color:hsl(var(--primary));font-weight:700;margin-top:.6rem;">Anleitung ansehen →</p>
+          </a>
+        ))}
+      </div>
+      <p class="center mt-3"><a class="btn btn--outline" href="/devices/">Alle unterstützten Geräte</a></p>
+    </div>
+  </section>
+
+  <RelatedLinks title="Sport, Filme & internationale Kanäle" items={contentLinks} />
+
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head center">
+        <p class="eyebrow">Aus dem Blog</p>
+        <h2>IPTV-Ratgeber 2026</h2>
+      </div>
+      <div class="grid grid-3">
+        <a class="card card-hover link-card" href="/blog/best-iptv-service-2026/"><h3>Bester IPTV Service 2026</h3><p>Worauf Sie vor dem Abschluss eines Abos achten sollten.</p></a>
+        <a class="card card-hover link-card" href="/blog/iptv-vs-cable-tv-2026/"><h3>IPTV vs. Kabel-TV</h3><p>Was lohnt sich 2026 wirklich mehr?</p></a>
+        <a class="card card-hover link-card" href="/blog/best-iptv-firestick-no-buffering-2026/"><h3>IPTV für Firestick ohne Buffering</h3><p>Die besten Einstellungen für flüssiges Streaming.</p></a>
+      </div>
+      <p class="center mt-3"><a class="btn btn--outline" href="/blog/">Alle Artikel</a></p>
+    </div>
+  </section>
+
+  <FAQ items={GENERAL_FAQ} />
+  <CtaBand />
+</Layout>
