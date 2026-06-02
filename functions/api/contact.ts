@@ -3,7 +3,7 @@
 // Required environment variables (set in the Pages project settings):
 //   RESEND_API_KEY  – your Resend API key (secret)
 // Optional:
-//   CONTACT_TO      – recipient address (default: admirfric@gmail.com)
+//   CONTACT_TO      – recipient address (default: the Resend account owner)
 //   CONTACT_FROM    – verified sender (default: "NoFreeze Kontakt <onboarding@resend.dev>")
 //                     Once nofreeze.pro is verified in Resend, set e.g. "NoFreeze <noreply@nofreeze.pro>".
 
@@ -56,7 +56,7 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
       return json({ error: 'Serverkonfiguration fehlt. Bitte kontaktieren Sie uns per WhatsApp.' }, 500);
     }
 
-    const to = env.CONTACT_TO || 'admirfric@gmail.com';
+    const to = env.CONTACT_TO || 'muminovic.meliha@gmail.com';
     const from = env.CONTACT_FROM || 'NoFreeze Kontakt <onboarding@resend.dev>';
 
     const html = `
