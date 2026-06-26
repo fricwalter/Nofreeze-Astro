@@ -5,6 +5,7 @@ export const SITE = {
   domain: 'nofreeze.pro',
   url: 'https://nofreeze.pro',
   email: 'support@nofreeze.pro',
+  emailDisplay: 'support [at] nofreeze.pro',
   // WhatsApp ordering / support number (international format, no +)
   whatsapp: '4915251741280',
   defaultLocale: 'de',
