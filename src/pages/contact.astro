@@ -16,11 +16,26 @@ const description = 'Kontaktieren Sie das NoFreeze IPTV Team per WhatsApp oder E
       <p class="lead">Haben Sie Fragen zu Paketen, Einrichtung oder Ihrem Abo? Unser Support-Team hilft Ihnen
         7 Tage die Woche schnell weiter – am einfachsten direkt über WhatsApp.</p>
 
+      <div class="card mt-3">
+        <h2>Wobei wir Ihnen helfen</h2>
+        <p>NoFreeze IPTV Support ist für Fragen vor und nach der Bestellung da. Wenn Sie wissen wollen, welches
+          Paket zu Sport, Filmen, Serien oder internationalen Sendern passt, schreiben Sie uns kurz, welche Geräte
+          Sie nutzen und welche Inhalte Ihnen wichtig sind. Wir sagen Ihnen dann, ob Firestick, Smart TV, Android TV,
+          Apple TV oder IPTV Smarters für Ihre Situation am besten passt.</p>
+        <p>Auch bei der Einrichtung müssen Sie nicht lange suchen. Senden Sie uns einfach Ihr Gerät, die genutzte
+          App und eine kurze Beschreibung des Problems. Typische Themen sind Login-Daten, Player-Auswahl, EPG,
+          Favoritenlisten, VOD, Live-Sport, Buffering oder ein Wechsel auf ein längeres IPTV Abo. Je genauer die
+          Nachricht ist, desto schneller können wir antworten.</p>
+        <p>Für Bestellungen ist WhatsApp meistens der schnellste Weg. Für längere Erklärungen, Datenschutzfragen
+          oder technische Details ist das Formular besser. Bitte senden Sie keine Passwörter oder Zahlungsdaten über
+          das Formular. Wir fragen nur die Angaben ab, die wir wirklich für die Antwort brauchen.</p>
+      </div>
+
       <div class="grid grid-2 mt-3">
         <div class="card">
           <h3>💬 WhatsApp</h3>
           <p class="muted">Schnellste Antwort – ideal für Bestellung und Einrichtung.</p>
-          <a class="btn btn--primary" href={whatsappLink('Hallo, ich habe eine Frage zu NoFreeze IPTV.')} target="_blank" rel="noopener nofollow">Chat starten</a>
+          <a class="btn btn--primary" href="#contactForm" data-wa={whatsappLink('Hallo, ich habe eine Frage zu NoFreeze IPTV.')}>Chat starten</a>
         </div>
         <div class="card">
           <h3>✉️ E-Mail</h3>
@@ -52,6 +67,23 @@ const description = 'Kontaktieren Sie das NoFreeze IPTV Team per WhatsApp oder E
           <span id="cfStatus" role="status" aria-live="polite" class="muted" style="font-size:.92rem;"></span>
         </div>
       </form>
+
+      <div class="grid grid-2 mt-3">
+        <div class="card">
+          <h2>Vor der Bestellung</h2>
+          <p>Wenn Sie noch nicht sicher sind, welches IPTV Paket passt, nennen Sie uns einfach Ihr Land, Ihr Gerät
+            und die Inhalte, die Sie am häufigsten schauen. Wichtig sind zum Beispiel Live-Sport, Filme, Serien,
+            internationale Sender, deutschsprachige Kanäle oder 4K-Qualität. Daraus können wir schnell ableiten,
+            ob ein kurzer Test, ein Monatsabo oder direkt ein längeres Paket sinnvoll ist.</p>
+        </div>
+        <div class="card">
+          <h2>Nach der Aktivierung</h2>
+          <p>Falls etwas nicht läuft, helfen ein paar Details: Gerät, App, Internetverbindung, Fehlermeldung und
+            ob Live-TV, VOD oder EPG betroffen ist. Bei Buffering prüfen wir zuerst App-Einstellungen, Player,
+            WLAN/LAN, VPN und die passende Server-Auswahl. So lässt sich das Problem meistens ohne langes Hin und Her
+            eingrenzen.</p>
+        </div>
+      </div>
 
       <p class="muted mt-3" style="font-size:.9rem;">Hinweis: NoFreeze IPTV beschreibt IPTV als Technologie.
         Bitte nutzen Sie ausschließlich ordnungsgemäß lizenzierte Inhalte und Dienste.</p>

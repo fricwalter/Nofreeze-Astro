@@ -53,7 +53,7 @@ const productSchema = {
             {PLAN_FEATURES.map((f) => (<li>{f}</li>))}
           </ul>
           <a class={`btn ${plan.popular ? 'btn--primary' : 'btn--outline'}`} style="width:100%;margin-top:1.25rem;"
-             href={whatsappLink(plan.whatsappText)} target="_blank" rel="noopener nofollow">Jetzt kaufen</a>
+             href="/contact/" data-wa={whatsappLink(plan.whatsappText)}>Jetzt kaufen</a>
           <p class="muted center" style="font-size:.78rem;margin:.75rem 0 0;">✓ Zufrieden oder Geld zurück</p>
         </div>
       ))}

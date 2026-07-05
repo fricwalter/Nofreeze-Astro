@@ -19,7 +19,7 @@ export function whatsappLink(text: string): string {
 
 // Primary navigation (top hub pages, German labels)
 export const NAV_PRIMARY = [
-  { label: 'Start', path: '/' },
+  { label: 'NoFreeze IPTV', path: '/' },
   { label: 'Preise', path: '/iptv-subscription-plans/' },
   { label: 'Sport', path: '/iptv-sports/' },
   { label: 'Kanäle', path: '/iptv-channels/' },
@@ -64,6 +64,7 @@ export const FOOTER_GROUPS: { title: string; links: { label: string; path: strin
     title: 'Länder',
     links: [
       { label: 'IPTV USA', path: '/iptv-usa/' },
+      { label: 'IPTV Texas', path: '/iptv-texas/' },
       { label: 'IPTV UK', path: '/iptv-uk/' },
       { label: 'IPTV Deutschland', path: '/iptv-germany/' },
       { label: 'Alle Länder', path: '/countries/' },

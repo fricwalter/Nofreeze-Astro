@@ -23,6 +23,23 @@ const regions = COUNTRIES.filter((c) => c.region);
 
   <section class="section">
     <div class="container">
+      <div class="section-head center">
+        <h2>Beliebte IPTV Regionen</h2>
+        <p>Direkte Einstiege für stark gesuchte Länder und Regionen, damit Nutzer und Crawler die wichtigsten lokalen Seiten schneller erreichen.</p>
+      </div>
+      <div class="grid grid-3 mt-3">
+        {['iptv-usa', 'iptv-texas', 'iptv-canada'].map((slug) => {
+          const c = COUNTRIES.find((item) => item.slug === slug);
+          return c && (
+            <a class="card card-hover link-card" href={`/${c.slug}/`}>
+              <div class="ic">{c.flag}</div><h3>IPTV {c.name}</h3>
+              <p>{c.intro.slice(0, 130)}…</p>
+              <p style="color:hsl(var(--primary));font-weight:700;margin-top:.6rem;">Region ansehen →</p>
+            </a>
+          );
+        })}
+      </div>
+
       <h2 class="center">Länder</h2>
       <div class="grid grid-3 mt-3">
         {countriesOnly.map((c) => (

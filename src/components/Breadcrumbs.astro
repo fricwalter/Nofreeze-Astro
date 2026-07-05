@@ -2,7 +2,7 @@
 import { SITE } from '../data/site';
 export interface Crumb { label: string; path?: string; }
 const { items = [] } = Astro.props as { items: Crumb[] };
-const all: Crumb[] = [{ label: 'Start', path: '/' }, ...items];
+const all: Crumb[] = [{ label: 'NoFreeze IPTV Startseite', path: '/' }, ...items];
 const jsonld = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
