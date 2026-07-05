@@ -9,8 +9,9 @@ import CtaBand from '../components/CtaBand.astro';
 import { GENERAL_FAQ } from '../data/faq';
 import { SITE } from '../data/site';
 
-const title = 'NoFreeze IPTV 2026 | Bestes IPTV Abo für Sport, Filme & 4K Streaming';
-const description = SITE.description;
+const title = 'Bester IPTV Anbieter Deutschland 2026 | IPTV Abo kaufen – NoFreeze';
+const description =
+  'NoFreeze IPTV: deutscher Premium IPTV Anbieter für IPTV Abo kaufen, IPTV Preise, Fire TV Stick, 4K, Sport und deutsche Sender ohne Buffering.';
 
 const deviceLinks = [
   { ic: '🔥', label: 'IPTV für Firestick', path: '/iptv-for-firestick/', desc: 'In Minuten einrichten – ohne Buffering streamen.' },
@@ -22,11 +23,122 @@ const contentLinks = [
   { ic: '🎬', label: 'Filme & Serien', path: '/iptv-movies-vod/', desc: 'Über 70.000 VOD-Titel auf Abruf.' },
   { ic: '🌍', label: 'Internationale Kanäle', path: '/countries/', desc: 'USA, UK, Deutschland und viele mehr.' },
 ];
+const softwareSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'NoFreeze IPTV',
+  applicationCategory: 'MultimediaApplication',
+  operatingSystem: 'Android, iOS, Windows, macOS, Fire TV, Smart TV, Apple TV',
+  description,
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '4.8',
+    bestRating: '5',
+    reviewCount: '127',
+  },
+  offers: {
+    '@type': 'AggregateOffer',
+    lowPrice: '14.99',
+    highPrice: '83.99',
+    priceCurrency: 'EUR',
+    url: SITE.url + '/iptv-subscription-plans/',
+  },
+};
 ---
 <Layout title={title} description={description}>
   <Hero />
   <TrustStrip />
   <Pricing />
+
+  <section class="section section--alt">
+    <div class="container" style="max-width:58rem;">
+      <div class="section-head center">
+        <p class="eyebrow">IPTV kaufen</p>
+        <h2>Bester IPTV Anbieter für Deutschland, Österreich und deutsche Sender</h2>
+        <p class="lead">Wenn Sie ein IPTV Abo kaufen möchten, zählt nicht nur die Anzahl der TV Sender. Wichtig sind
+          stabile Server, klare IPTV Preise, einfache Einrichtung und Support, der bei Fire TV Stick, Smart TV und
+          Android Devices wirklich helfen kann.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>IPTV testen vor dem langen Abo</h3>
+          <p>Starten Sie mit einem kurzen Paket, prüfen Sie Live-TV, VOD, IPTV Sport und IPTV ohne Buffering und wechseln
+            Sie danach auf günstiges IPTV im Jahrespaket. Die aktuellen IPTV Preise stehen transparent auf der
+            <a href="/iptv-subscription-plans/">Paketeseite</a>.</p>
+        </div>
+        <div class="card">
+          <h3>Fire TV Stick, TiviMate Setup und IPTV Player</h3>
+          <p>NoFreeze IPTV läuft auf IPTV Firestick, Fire TV Stick 4K, Smart TV, Apple TV und Android TV. Für viele Nutzer
+            sind TiviMate, IPTV Smarters Pro und andere IPTV Player die beste Wahl, weil TV Guide, Favoriten und EPG
+            sauber eingerichtet werden können.</p>
+        </div>
+        <div class="card">
+          <h3>Bestes IPTV Deutschland und internationale Auswahl</h3>
+          <p>Für deutsches IPTV und IPTV deutsche Sender sind Sport, Filme und Serien auf Deutsch entscheidend.
+            NoFreeze ist auch für IPTV Österreich, Expats und mehrsprachige Haushalte interessant, weil neben deutschen TV Sendern
+            auch internationale Kanäle verfügbar sind.</p>
+        </div>
+      </div>
+      <div class="grid grid-3 mt-3">
+        <a class="card card-hover link-card" href="/best-iptv-service/">
+          <h3>Bester IPTV Anbieter</h3>
+          <p>Worauf Sie beim Vergleich von Premium IPTV achten sollten.</p>
+          <p style="color:hsl(var(--primary));font-weight:700;margin-top:.6rem;">Vergleich ansehen →</p>
+        </a>
+        <a class="card card-hover link-card" href="/buy-iptv-subscription/">
+          <h3>IPTV Abo kaufen</h3>
+          <p>So bestellen Sie No Freeze IPTV in wenigen Minuten.</p>
+          <p style="color:hsl(var(--primary));font-weight:700;margin-top:.6rem;">Abo kaufen →</p>
+        </a>
+        <a class="card card-hover link-card" href="/iptv-for-firestick/">
+          <h3>IPTV Fire TV Stick</h3>
+          <p>IPTV 4K einrichten: TiviMate Setup mit TiviMate APK, IPTV Smarters oder kompatiblem IPTV Player.</p>
+          <p style="color:hsl(var(--primary));font-weight:700;margin-top:.6rem;">Einrichtung ansehen →</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container" style="max-width:58rem;">
+      <div class="section-head center">
+        <p class="eyebrow">Kaufberatung</p>
+        <h2>So wählen Sie das richtige IPTV Abo</h2>
+        <p class="lead">Ein gutes IPTV Abo muss im Alltag einfach funktionieren. Deshalb sollten Sie vor dem Kauf
+          nicht nur auf die Zahl der Kanäle schauen, sondern auf Stabilität, Geräte-Support und klare Laufzeiten.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>1. Gerät prüfen</h3>
+          <p>Nutzen Sie Firestick, Android TV Box, Samsung Smart TV oder Apple TV? Dann wählen Sie einen Anbieter,
+            der genau diese Geräte unterstützt. NoFreeze IPTV bietet passende Anleitungen für die wichtigsten Apps
+            und Player.</p>
+        </div>
+        <div class="card">
+          <h3>2. Inhalte prüfen</h3>
+          <p>Schauen Sie vor allem Bundesliga, internationale Sportkanäle, Filme, Serien oder deutsche Sender?
+            Danach richtet sich, welches Paket für Sie sinnvoll ist. Für Sportfans sind stabile Streams besonders
+            wichtig.</p>
+        </div>
+        <div class="card">
+          <h3>3. Laufzeit wählen</h3>
+          <p>Wenn Sie IPTV testen möchten, starten Sie kurz. Wenn alles passt, ist ein längeres Paket günstiger.
+            Das 12-Monats-Paket senkt den Monatspreis deutlich und bleibt trotzdem ohne versteckte Kosten.</p>
+        </div>
+      </div>
+      <div class="card mt-3">
+        <h3>Warum NoFreeze als Premium IPTV Anbieter aufgebaut ist</h3>
+        <p>NoFreeze IPTV konzentriert sich auf eine klare Nutzung: schnelle Bestellung, einfache Einrichtung und
+          stabile Wiedergabe auf beliebten Geräten. Sie bekommen Zugangsdaten, richten Ihren IPTV Player ein und
+          können danach Live-TV, VOD, Sport und internationale Sender nutzen. Bei Fragen hilft die
+          <a href="/setup-guide/">Einrichtungsanleitung</a> oder der <a href="/contact/">Support</a>.</p>
+        <p>Für deutsche Nutzer sind besonders drei Punkte wichtig: deutsche Sender, einfache Bedienung und gutes
+          Streaming ohne ständiges Nachjustieren. Genau dafür verlinkt die Startseite direkt auf
+          <a href="/iptv-germany/">IPTV Deutschland</a>, <a href="/iptv-subscription-plans/">IPTV Preise</a> und
+          <a href="/iptv-for-firestick/">IPTV für Firestick</a>.</p>
+      </div>
+    </div>
+  </section>
 
   <section class="section section--alt">
     <div class="container">
@@ -66,4 +178,5 @@ const contentLinks = [
 
   <FAQ items={GENERAL_FAQ} />
   <CtaBand />
+  <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
 </Layout>
