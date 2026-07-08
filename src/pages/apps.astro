@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CtaBand from '../components/CtaBand.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { DEVICES } from '../data/devices';
+
+const title = 'IPTV Apps 2026 | IPTV Smarters Pro, TiviMate, Smart IPTV';
+const description =
+  'Uebersicht der besten IPTV Apps fuer Firestick, Smart TV, Android TV, Apple TV, Roku, Kodi und VLC mit passenden NoFreeze IPTV Setup-Seiten.';
+
+const appMap = new Map<string, Set<string>>();
+
+for (const device of DEVICES) {
+  for (const app of device.apps) {
+    if (!appMap.has(app)) appMap.set(app, new Set<string>());
+    appMap.get(app)?.add(device.name);
+  }
+}
+
+const apps = [...appMap.entries()]
+  .map(([name, devices]) => ({ name, devices: [...devices] }))
+  .sort((a, b) => a.name.localeCompare(b.name));
+---
+
+<Layout title={title} description={description}>
+  <Breadcrumbs items={[{ label: 'IPTV Apps' }]} />
+
+  <section class="section" style="padding-top:1.5rem;">
+    <div class="container" style="max-width:52rem;">
+      <p class="eyebrow">IPTV Player & Apps</p>
+      <h1>IPTV Apps fuer NoFreeze IPTV</h1>
+      <p class="lead">
+        NoFreeze IPTV laeuft mit vielen IPTV Playern. Diese Uebersicht zeigt die wichtigsten Apps und auf welchen
+        Geraeten sie typischerweise genutzt werden.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-3">
+        {apps.map((app) => (
+          <article class="card">
+            <h2 style="font-size:1.15rem;margin-bottom:.5rem;">{app.name}</h2>
+            <p style="margin-bottom:.75rem;">Passend fuer: {app.devices.join(', ')}</p>
+            <a href="/devices/" style="color:hsl(var(--primary));font-weight:700;">Setup ansehen -></a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <RelatedLinks alt={true} title="Passende Anleitungen" items={[
+    { ic: 'TV', label: 'Geraete-Hub', path: '/devices/', desc: 'Alle Setup-Seiten fuer Firestick, Smart TV, Apple TV und mehr.' },
+    { ic: 'APP', label: 'Beste IPTV Player', path: '/blog/best-iptv-player-apps-2026/', desc: 'Vergleich der wichtigsten IPTV Player Apps.' },
+    { ic: 'SET', label: 'Setup Guide', path: '/setup-guide/', desc: 'Allgemeine Einrichtung Schritt fuer Schritt.' },
+  ]} />
+
+  <CtaBand />
+</Layout>
