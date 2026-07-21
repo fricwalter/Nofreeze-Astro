@@ -58,6 +58,7 @@ export const FOOTER_GROUPS: { title: string; links: { label: string; path: strin
       { label: 'Samsung Smart TV', path: '/iptv-for-samsung-smart-tv/' },
       { label: 'Apple TV', path: '/iptv-apple-tv/' },
       { label: 'Alle Geräte', path: '/devices/' },
+      { label: 'IPTV Apps', path: '/apps/' },
     ],
   },
   {
